@@ -17,8 +17,15 @@
         <% if(config.image_large == "true") { %> <meta name="twitter:card" content="summary_large_image" /> <% } %>
     </head>
     <body>
-        <% if(config.title) { %> <h1><%= config.title %></h1> <% } %>
-        <% if(config.description) { %> <p><%= config.description %></p> <% } %>
-        <% if(config.image) { %> <img src="<%= config.image %>"> <% } %>
+        <% if(config.redir) { %>
+            <script>
+                window.location = "<%= config.redir %>";
+            </script>
+            <p>Redirecting to <a href="<%= config.redir %>"><%= config.redir %></a></p>
+        <% } else { %>
+            <% if(config.title) { %> <h1><%= config.title %></h1> <% } %>
+            <% if(config.description) { %> <p><%= config.description %></p> <% } %>
+            <% if(config.image) { %> <img src="<%= config.image %>"> <% } %>
+        <% } %>
     </body>
 </html>

@@ -13,6 +13,8 @@
         <input type="text" id="input-description"/><br/>
         <a>Link URL</a>
         <input type="text" id="input-link"/><br/>
+        <a>Redirect URL</a>
+        <input type="text" id="input-redirect"/><br/>
         <a>Image URL</a>
         <input type="text" id="input-image"/>
         <input type="checkbox" id="input-image-large">Large image</input>
@@ -35,6 +37,7 @@
                 let title = getFieldData('input-title');
                 let description = getFieldData('input-description');
                 let link = getFieldData('input-link');
+                let redir = getFieldData('input-redirect');
                 let image_url = getFieldData('input-image');
                 let image_large = getToggleData('input-image-large');
                 let image_isvideo = getToggleData('input-image-isvideo');
@@ -43,6 +46,7 @@
                 if (title) params.push(`title=${encodeURIComponent(title)}`);
                 if (description) params.push(`description=${encodeURIComponent(description)}`);
                 if (link) params.push(`link=${encodeURIComponent(link)}`);
+                if (redir) params.push(`redir=${encodeURIComponent(redir)}`);
                 if (image_url) params.push(`image=${encodeURIComponent(image_url)}`);
                 if (image_large) params.push(`image_large=true`);
                 if (image_isvideo) params.push(`image_isvideo=true`);
