@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= config.title ?? 'Embed' %></title>
+        <meta charset="UTF-8">
+        <% if(config.title) { %> <meta property="og:title" content="<%= config.title %>"> <% } %>
+        <% if(config.description) { %> <meta property="description" content="<%= config.description %>"> <% } %>
+        <% if(config.color) { %> <meta name="theme-color" data-react-helmet="true" content="<%= config.color %>"> <% } %>
+        <% if(config.link) { %> <meta name="og:url" content="<%= config.link %>"> <% } %>
+        <% if(config.image) { %>
+            <% if(config.image_isvideo == "true") { %>
+                <meta name="og:video" content="<%= config.image %>">
+            <% } else { %>
+                <meta name="og:image" content="<%= config.image %>">
+            <% }%>
+        <% } %>
+        <% if(config.image_large == "true") { %> <meta name="twitter:card" content="summary_large_image" /> <% } %>
+    </head>
+    <body>
+        <% if(config.title) { %> <h1><%= config.title %></h1> <% } %>
+        <% if(config.description) { %> <p><%= config.description %></p> <% } %>
+        <% if(config.image) { %> <img src="<%= config.image %>"> <% } %>
+    </body>
+</html>

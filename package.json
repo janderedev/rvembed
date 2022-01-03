@@ -1,0 +1,16 @@
+{
+  "name": "rvembed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "rm -rf dist && tsc && node dist/index"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2"
+  }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Revolt embed service</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <a>Title</a>
+        <input type="text" id="input-title"/><br/>
+        <a>Description</a>
+        <input type="text" id="input-description"/><br/>
+        <a>Link URL</a>
+        <input type="text" id="input-link"/><br/>
+        <a>Image URL</a>
+        <input type="text" id="input-image"/>
+        <input type="checkbox" id="input-image-large">Large image</input>
+        <input type="checkbox" id="input-image-isvideo">Is video (Doesn't seem to work)</input>
+        <br/>
+        <a>Color</a>
+        <input type="color" id="input-color" value="#212a38"/>
+        <a>(Doesn't appear to work properly)</a>
+        <br/>
+        <button onclick="generate()">Generate</button>
+        <input type="text" id="output-field" readonly="readonly" disabled="disabled" onclick="this.select()" value='Click on "Generate"'/>
+        <button onclick="copyStringToClipboard(document.getElementById('output-field').value)" id="copy-1">Copy</button>
+        <button onclick="copyStringToClipboard(`[\u200b](${document.getElementById('output-field').value})`)" id="copy-2">Copy invisble Revolt link</button>
+
+        <script>
+            function generate() {
+                let url = window.location + "embed";
+                let params = [];
+
+                let title = getFieldData('input-title');
+                let description = getFieldData('input-description');
+                let link = getFieldData('input-link');
+                let image_url = getFieldData('input-image');
+                let image_large = getToggleData('input-image-large');
+                let image_isvideo = getToggleData('input-image-isvideo');
+                let color = getFieldData('input-color');
+
+                if (title) params.push(`title=${encodeURIComponent(title)}`);
+                if (description) params.push(`description=${encodeURIComponent(description)}`);
+                if (link) params.push(`link=${encodeURIComponent(link)}`);
+                if (image_url) params.push(`image=${encodeURIComponent(image_url)}`);
+                if (image_large) params.push(`image_large=true`);
+                if (image_isvideo) params.push(`image_isvideo=true`);
+                if (color) params.push(`color=${encodeURIComponent(color)}`);
+
+                for (const i in params) {
+                    const val = params[i];
+                    url += `${i == 0 ? '?' : '&'}${val}`;
+                }
+
+                document.getElementById('output-field').value = url;
+                document.getElementById('output-field').disabled = false;
+            }
+
+            function getFieldData(id) { return document.getElementById(id).value }
+            function getToggleData(id) { return document.getElementById(id).checked }
+
+            // https://techoverflow.net/2018/03/30/copying-strings-to-the-clipboard-using-pure-javascript/
+            function copyStringToClipboard(str) {
+                // Create new element
+                var el = document.createElement('textarea');
+                // Set value (string to be copied)
+                el.value = str;
+                // Set non-editable to avoid focus and move outside of view
+                el.setAttribute('readonly', '');
+                el.style = {position: 'absolute', left: '-9999px'};
+                document.body.appendChild(el);
+                // Select text inside element
+                el.select();
+                // Copy text to clipboard
+                document.execCommand('copy');
+                // Remove temporary element
+                document.body.removeChild(el);
+            }
+
+        </script>
+    </body>
+</html>
