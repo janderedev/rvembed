@@ -9,6 +9,6 @@ FROM node:16 as prod
 WORKDIR /app/
 COPY --from=build /build/package.json /build/yarn.lock ./
 COPY --from=build /build/dist ./dist
-COPY --from=build /build/assets ./assets
+COPY --from=build /build/views ./views
 RUN yarn install --production --frozen-lockfile
 CMD ["yarn", "start"]
