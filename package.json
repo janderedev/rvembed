@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "rm -rf dist && tsc && node dist/index"
+    "build": "rm -rf dist && tsc",
+    "start": "node dist/index",
+    "dev": "yarn build && yarn start"
   },
   "author": "",
   "license": "ISC",
