@@ -4,7 +4,7 @@
         <title><%= config.title ?? 'Embed' %></title>
         <meta charset="UTF-8">
         <% if(config.title) { %> <meta property="og:title" content="<%= config.title %>"> <% } %>
-        <% if(config.description) { %> <meta property="description" content="<%= config.description %>"> <% } %>
+        <% if(config.description) { %> <meta property="og:description" content="<%= config.description %>"> <% } %>
         <% if(config.color) { %> <meta name="theme-color" data-react-helmet="true" content="<%= config.color %>"> <% } %>
         <% if(config.link) { %> <meta name="og:url" content="<%= config.link %>"> <% } %>
         <% if(config.image) { %>
