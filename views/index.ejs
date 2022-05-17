@@ -27,7 +27,7 @@
         <button onclick="generate()">Generate</button>
         <input type="text" id="output-field" readonly="readonly" disabled="disabled" onclick="this.select()" value='Click on "Generate"'/>
         <button onclick="copyStringToClipboard(document.getElementById('output-field').value)" id="copy-1">Copy</button>
-        <button onclick="copyStringToClipboard(`[\u200b](${document.getElementById('output-field').value})`)" id="copy-2">Copy invisble Revolt link</button>
+        <button onclick="copyStringToClipboard(`[](${document.getElementById('output-field').value})`)" id="copy-2">Copy invisble Revolt link</button>
 
         <script>
             function generate() {
